@@ -1,5 +1,6 @@
 ---
-title: "The Impact of Choosing Wisely™ Recommendations and Insurance Coverage Restrictions on Low-Value Care: An Interrupted Time Series Analysis of Vitamin D Tests"
+title: "Guidelines vs. Financial Incentives: Which Policy Tool Actually Changes Physician Behavior?"
+subtitle: "Lessons from Switzerland's Vitamin D case"
 author: "Aurélien Sallin"
 date: "2025-10-20"
 image: cover-vitaminD.png
@@ -210,11 +211,11 @@ plot_vitd_masked <- function(
 ---
 
 ::: {.banner}
-![](img/vitd-banner.jpg){.banner-image}
+![](img/Vitamin-D.jpg){.banner-image}
 
 ::: {.banner-overlay}
-# Swiss Healthcare Policy in Action
-## Tracking the Impact of Evidence-Based Interventions on Low-Value Care
+# The Impact of Choosing Wisely™ Recommendations and Insurance Coverage Restrictions on Low-Value Care
+## An Interrupted Time Series Analysis of Vitamin D Tests
 :::
 :::
 
@@ -249,7 +250,7 @@ This study is the result of a productive collaboration between the health servic
 
 This collaboration demonstrates how insights from claims data can advance our understanding of the healthcare system and inform policy decisions aimed at reducing costs for the Swiss population.
 
-This research has been published in BMC Health Services Research [@sallin2025impact].
+This research has been published in BMC Health Services Research and is available here 👉[@sallin2025impact].
 
 
 ::::{.cr-section}
@@ -340,7 +341,7 @@ plot_vitd_masked(dfgraph, counterfactualM, mask_from = -1, mask_counterfactual_f
 #### The Numbers: Clinical Recommendations Work, But Modestly
 Statistical analysis confirms a **4.9% reduction** in testing rates [95% CI: -5.3%, -4.5%].
 
-We conduct statistical tests to see whether the recommendation led to a recognizable pattern. **We find The number of tests per consultation falls by 4.9% [-5.3%, -4.5%] after the recommendation.**
+We conduct statistical tests to see whether the recommendation led to a recognizable pattern. **The number of tests per consultation falls by 4.9% [-5.3%, -4.5%] after the recommendation.**
 
 :::
 
@@ -380,7 +381,7 @@ plot_vitd_masked(dfgraph, counterfactualM, mask_from = 0)
 :::{focus-on="cr-plot-layout-6"}
 
 #### Financial Incentives: The Game Changer
-Coverage restrictions deliver a **62% reduction** in testing rates—a dramatic drop compared to clinical recommendations alone.
+Coverage restrictions deliver a **62% reduction** in testing rates. This is a dramatic drop compared to clinical recommendations alone.
 
 The number of tests per consultation falls by 62% [-62.4%, -61.6%] The 6-month cumulated effect is -60% [-60.0%, 59.0%].
 
