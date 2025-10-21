@@ -1,0 +1,227 @@
+---
+pagetitle: Story
+title: "Which way do you ski?"
+subtitle: Scroll your way through the story of OpenSkiStats and visualize the methods used to assess ski area orientation.
+image: "../images/rose_dartmouth.svg"
+engine: jupyter
+execute:
+  echo: false
+format:
+  closeread-html:
+    mainfont: Quicksand
+    css: style.css
+    theme: solar
+    fontsize: 1.2rem
+    # remove-header-space: true
+    cr-style:
+      narrative-background-color-overlay: "rgb(0,43,54,0.75)"
+      narrative-font-size: 1.4rem
+      narrative-text-color-overlay: "#e2e2e2"
+      narrative-background-color-sidebar: "#002B36"
+      narrative-text-color-sidebar: "#e2e2e2"
+      section-background-color: "#002B36"
+      narrative-overlay-max-width: "700px"
+    # this include-in-header is not inherited from the project _quarto.yml,
+    # likely because the format is different
+    include-in-header:
+      - ../common/matomo.html
+title-block-banner: false
+---
+
+::::{.cr-section}
+
+Skiers and riders, you’ve all seen these trail maps —
+they're essential for navigating the mountain, finding the fastest lift, or planning your next run.
+@cr-southface
+
+This map,
+painted by the legendary [James Niehues](https://en.wikipedia.org/wiki/James_Niehues),
+shows the [**South Face**]{style="color: #FFC857;"} of Big Sky, Montana, 🇺🇸.
+
+But have you ever wondered how common south-facing slopes are?
+In other words, do most ski trails in this hemisphere favor [**southern**]{style="color: #FFC857;"} aspects,
+or are they more often found on the [**north**]{style="color: #36B37E;"} side of the mountain?
+@cr-southface
+
+:::{#cr-southface}
+![](https://www.myskimaps.com/Ski-Maps/USA/Big-Sky-South-Face-Ski-Trail-Map-2019.jpg)
+:::
+::::
+
+::::{.cr-section layout="overlay-center"}
+We began our journey to answer this question by gathering data from [OpenSkiMap](https://openskimap.org/),
+which refines [OpenStreetMap](https://www.openstreetmap.org/) to create an amazing interactive visualization of the world and all its ski trails.
+@cr-openskimap
+
+:::{#cr-openskimap}
+![](https://github.com/dhimmel/openskistats/raw/assets/assets/openskimap.jpg){style="border-radius: 0%;"}
+:::
+
+For decades, thousands of OpenStreetMap contributors have worked to annotate ski areas and their trails.<br><br>
+In the Upper Valley region of Vermont and New Hampshire, ...
+@cr-openskimap
+
+
+... you can see the iconic Killington and its neighbor Pico.
+[@cr-openskimap]{scale-by="3" pan-to="97%, -57%"}
+
+Here is a [local favorite](https://www.youtube.com/watch?v=1VbO4ZXTM4o "Mountains Not for Profit: short documentary by Teton Gravity Research in collaboration with the Indy Pass on four non-profit ski areas: Shames Mountain, Whaleback, Black Mountain of Maine, and Antelope Butte."), Whaleback Mountain.
+[@cr-openskimap]{scale-by="3" pan-to="-90%, -90%"}
+
+And just north of it is Storrs Hill, where you can [ski for free](https://www.powder.com/news/free-skiing-new-hampshire-ski-area "Lift Tix Are Now Free All Season Long at New Hampshire Ski Area") this season!
+[@cr-openskimap]{scale-by="3" pan-to="-80%, -65%"}
+
+Analyzing this data, we can see how *north-facing* each ski area is by looking at its "ski rose".
+@cr-openskimap
+
+Take, for example, the Dartmouth Skiway in Lyme, NH.
+[@cr-openskimap]{scale-by="5" pan-to="-200%, 140%"}
+
+::::
+
+::::{.cr-section}
+These are the two signature sides of the Skiway, [**Holt's Ledge**]{style="color: #FF8C42;"} and [**Winslow Ledge**]{style="color: #36B37E;"}.
+[@cr-dots-overlay]
+
+
+:::{#cr-dots-overlay}
+![](../images/dots_overlay.png)
+:::
+
+On powder days,
+you can ski from [**Winslow**]{style="color: #36B37E;"} across the Grafton Turnpike and glide right to the bottom of [**Holt's**]{style="color: #FF8C42;"} Ledge Double.
+[@cr-dots-only]
+
+:::{#cr-dots-only}
+![](../images/dots_only.png)
+:::
+
+:::{#cr-segments}
+![](../images/segments_plot.png)
+:::
+
+:::{focus-on="cr-segments"}
+If we:
+
+- gather the coordinates for all trail segments
+- connect the dots
+- treat each of these segments as a [**vector**]{style="color: #f07178;"}
+- scale the vectors by their vertical drops
+
+we can summarize them in a ...
+:::
+::::
+
+:::::{style="--cr-narrative-sidebar-width: 3fr;"}
+::::{.cr-section}
+... [**ski rose**]{style="color: #f07178;"}!<br><br>
+Similar to how [wind roses](https://en.wikipedia.org/wiki/Wind_rose) chart wind direction for location,
+ski roses characterize the directions of all trail segments at a ski area.
+@cr-dartmouth-rose
+
+
+:::{#cr-dartmouth-rose}
+![](../images/rose_dartmouth.svg)
+:::
+
+Each *petal* of the circular chart represents a compass direction,
+with its radius proportional to the [**combined vertical**]{style="color: #A56ACF;"} of trail segments in that direction.<br><br>
+Highlighted is the [**Northwest by West**]{style="color: #f07178;"} petal...
+@cr-rose-nwbw
+
+
+:::{#cr-rose-nwbw}
+![](../images/rose_nwbw.svg)
+:::
+
+:::{focus-on="cr-rose-nwbw"}
+... to which these particular segments contribute.
+
+<br>
+![](../images/segments_nwbw.svg)
+:::
+
+:::{focus-on="cr-rose-nne"}
+And here's the [**North North East**]{style="color: #f07178;"} petal.
+
+<br>
+While these NNE segments appear similar in horizontal distance to the NWbW segments above, their greater steepness results in greater vertical drop, and hence the largest petal of the rose.
+
+<br>
+![](../images/segments_nne.svg)
+:::
+
+:::{#cr-rose-nne}
+![](../images/rose_nne.svg)
+:::
+
+::::
+:::::
+
+:::{style=text-align:center}
+We can do this for other ski areas too!
+:::
+
+::::{.cr-section}
+
+Here are 48 more ski roses randomly selected from the US.<br><br>
+Have you been to any of these?
+Did you remember facing north while skiing down?
+[@cr-all-roses]
+
+:::{#cr-all-roses}
+![](../images/all_roses.svg)
+:::
+
+And here are the [ski roses]{style="color: #f07178;"} for 37 US states with at least one ski area.<br><br>
+Do most states look north-facing to you?
+And, as an aside, can you tell which state has the most combined vertical?
+[@cr-us-roses]
+
+:::{#cr-us-roses}
+![](../images/us_roses_dark.svg)
+:::
+
+Our analysis of the orientation of *all* ski areas across the globe revealed a strong [poleward]{style="color: #36B37E;"} and moderate [eastward]{style="color: #36B37E;"} preference.<br><br>
+In other words, the majority of runs in the [northern]{style="color: #36B37E;"} hemisphere are oriented toward the [north]{style="color: #36B37E;"} and [east]{style="color: #36B37E;"},
+while those in the [southern]{style="color: #36B37E;"} hemisphere are oriented toward the [south]{style="color: #36B37E;"} and [east]{style="color: #36B37E;"}.
+[@cr-hemisphere]{scale-by="0.8"}
+
+This trend reflects which aspects maximize [snow retention]{style="color: #36B37E;"} by minimizing [sun exposure]{style="color: #FFC857;"} and preferring morning sun --- when temperatures are lower --- to afternoon sun.
+[@cr-hemisphere]{scale-by="0.8"}
+
+:::{#cr-hemisphere}
+![](../images/hemisphere.svg)
+:::
+
+::::
+:::{.column-page}
+In addition to trail bearings, we have published data on other key metrics of a ski area like [**total vertical**]{style="color: #A56ACF;"}, [**number of lifts**]{style="color: #A56ACF;"}, and [**peak elevation**]{style="color: #A56ACF;"} for ski areas across the world.
+
+In [OpenSkiStats.org/ski-areas](/ski-areas), you can search for your favorite ski area and explore all of its summary statistics.
+Whether you're planning your next powder day or just marveling at the hidden patterns of the slopes, this may be a fresh way to see the mountains you love.
+
+For example, below are the statistics of the five New Hampshire/Vermont mountains we saw earlier:
+
+<br>
+:::
+
+::::{.column-screen}
+:::{style="font-family: 'Source Sans 3'; font-size: 70%;"}
+```{python}
+#| output: asis
+from openskistats.display import embed_reactable_html, get_ski_area_reactable
+
+embed_reactable_html()
+get_ski_area_reactable(story=True)
+```
+:::
+::::
+<br>
+
+:::{.column-page}
+We hope this data inspires your winter adventures, helps you assess the climate resilience of distant ski mountains, or simply gives you a moment to pause and [*smell* the roses]{style="color: #f07178;"}.
+
+Curious to learn more?
+Read our [manuscript](/manuscript) to explore the approach we took and dive deeper into our findings.
+:::
