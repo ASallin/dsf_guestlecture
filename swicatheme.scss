@@ -1,0 +1,242 @@
+/*-- scss:defaults --*/
+
+
+// Base font size
+$font-size-root: 12px !default;
+
+// Normal text font size
+$font-size-normal: 0.2em !default;
+
+
+$font-family-sans-serif: 'swica', arial, Helvetica, sans-serif !default;
+$presentation-h1-font-size: 1.6em;
+$presentation-h2-font-size: 1.3em;
+$presentation-h3-font-size: 1.1em;
+$presentation-h4-font-size: 1em;
+$presentation-h5-font-size: 0.9em;
+$web-font-path: "";
+
+// colors
+$body-bg: #ffffff !default;
+$body-color: #000 !default;
+$link-color: #06494A !default;
+$selection-bg: #26351c !default;
+
+$code-color: #343232 !default;
+
+// headings
+$presentation-heading-font: 'swica', arial !default;
+$presentation-heading-color: #008E84FF !default;
+
+
+$presentation-block-margin: 24px;
+
+
+/*-- scss:rules --*/
+
+// fonts
+@font-face {
+    font-family: 'swica';
+    src: url('./fonts/SWICA-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'swica';
+    src: url('fonts/SWICA-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'swica';
+    src: url('fonts/SWICA-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+// for html export
+html[data-export="pdf"] .preview {
+    font-size: 1.15rem !important;
+}
+
+.small-space {
+    margin-top: 10px;
+    /* Adjust the value as needed */
+}
+
+.middle-space {
+    margin-top: 20px;
+    /* Adjust the value as needed */
+}
+
+body {
+    font-size: $font-size-normal !important;
+}
+
+.small-text {
+    font-size: 0.8em !important;
+}
+
+.reveal a {
+    line-height: 1.3em;
+}
+
+.sectionhead {
+    font-size: 100em;
+    text-align: center;
+    color: #b82179;
+    font-family: $presentation-heading-font;
+    background-color: $body-bg;
+    margin: 10px;
+    padding: 2px 2px 2px 2px;
+    width: 120px;
+    border-left: 10px solid;
+}
+
+.picture {
+    border-style: solid;
+    border-width: 3pt;
+    border-color: $body-color;
+    border-radius: 50%;
+    padding: 5pt;
+    height: 50%;
+    width: auto;
+}
+
+// if you want to specify headings with more details than what is available with sass variables above
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    margin: 0 0 20px 0;
+}
+
+.reveal h2 {
+    margin: 0 0 50px 0;
+}
+
+.reveal h4 {
+    margin: 0 0 40px 0;
+}
+
+// Add verticl space
+
+.vertical-space {
+    margin-top: 40px;
+    /* Adjust the size as needed */
+}
+
+// Change title slide
+#title-slide {
+
+    text-align: left;
+
+    .subtitle {
+        font-style: bold;
+        font-size: 120%;
+        color: #06494A;
+    }
+
+    .institute,
+    .quarto-title-affiliation,
+    .quarto-title-author-email {
+        font-style: italic;
+        font-size: 50%;
+        color: #7F7F7F;
+    }
+
+    .author,
+    .date,
+    .quarto-title-author-name {
+        color: $body-color;
+        font-size: 80%;
+    }
+
+    .quarto-title-authors {
+        display: flex;
+        justify-content: left;
+
+        .quarto-title-author {
+            padding-left: 0em;
+            padding-right: 0em;
+            width: 100%;
+        }
+    }
+
+    p.author::before,
+    div.quarto-title-author::before {
+        content: "";
+        display: block;
+        border: none;
+        background-color: $body-color;
+        color: $body-color;
+        height: 3px;
+        margin-bottom: 1em;
+    }
+
+}
+
+
+
+// other stuff
+.footer {
+    bottom: 10px !important;
+    color: $body-color !important;
+}
+
+.reveal-header .header-logo {
+    width: 5px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.slide-logo {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 10px !important;
+    max-height: 15% !important;
+    height: 10% !important;
+    width: auto !important;
+    color: $body-color !important;
+}
+
+.slide-menu-button {
+    left: 10px !important;
+    bottom: 10px !important;
+}
+
+.slide-number,
+.reveal.has-logo .slide-number {
+    bottom: 10px !important;
+    right: 10px !important;
+    top: unset !important;
+    color: $body-color !important;
+}
+
+.cell-output {
+    border: 1px solid $body-color;
+    border-radius: 4px;
+}
+
+code.sourceCode>span {
+    color: $body-bg !important;
+}
+
+.center-x {
+    text-align: center;
+}
+
+.center-xy {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateY(-50%), translateX(-50%);
+    transform: translateY(-50%), translateX(-50%);
+}

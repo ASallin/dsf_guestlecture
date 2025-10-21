@@ -1,0 +1,277 @@
+---
+title: 'Guest lecture'
+subtitle: 'aa'
+author: "Aurélien Sallin"
+date: "01/20/2025"
+echo: false
+code-line-numbers: false
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    smaller: true
+    fontsize: 36px
+    embed-resources: true
+    self-contained: true
+    slide-number: c
+    theme: swicatheme.scss
+    #logo: img/logoswica.png
+    #footer: <https://quarto.org>
+    #header-logo: img/logoswica.png
+highlight-style: dracula
+cache: false
+bibliography: references.bib
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, warning=FALSE}
+options(width = 100)
+library(knitr)
+knitr::opts_chunk$set(class.source = "chunkstyle")
+```
+
+
+
+
+
+## The "no control group" setting
+
+::: {.incremental}
+- **Problem:** In many real-world scenarios, finding a credible control group to evaluate a policy is not feasible.
+- **Example:** Health care policies often affect all providers simultaneously, like changes in physician compensation or changes in guidelines.
+
+![](img/bloodtest.jfif){height=200px width=auto .fragment}  ![](img/mri.jpg){height=200px width=auto .fragment} ![](img/syphilis.jpg){height=200px width=auto .fragment}
+
+- **Solution:** interrupted time series (ITS)
+
+- **Challenge:**  Standard interrupted time series (ITS) may produce biased estimates because of poor prediction, poor forecasting, and simplification assumptions with panel data.
+
+:::
+
+::: {.notes}
+No staggered intervention, no control group, no Diff-in-Diff
+No untreated units: forecast the counterfactual.
+
+Congenital syphilis (mother-to-child transmission or vertical transmission of syphilis of syphilis) causes damage to the fetus if the mother's infection is not detected and properly treated during pregnancy.
+
+October of 2016: “Syphilis No!” Project in Brazil
+:::
+
+
+
+---
+
+## The use of ITS in the evaluation of health system interventions has increased considerably
+
+::: {.incremental}
+
+<!--
+<div style="text-align: center;">
+  ![](img/bmjgh-2020-October-5-10--F6.large.jpg){height=350px .fragment}
+</div>
+-->
+
+**"The risk of bias for ITS studies was high for 53.3% and very high for 19.2%". (@hategeka2020use, N = 120, 1990-2020)**
+
+- The intervention was dependent of other changes.
+- Time series techniques were not propertly used.
+- Trends and time-dependent covariates were not correctly specified.
+- ...
+
+::: {.notes}
+See also @turner2021comparison
+:::
+
+:::
+
+
+---
+
+## `itsCausal` was born from the practical need for effective healthcare monitoring
+
+::: {.incremental}
+
+::: {style="font-size: 80%;"}
+  - Example: **two population-level interventions against low-value care (Vit. D testing) in Switzerland**.
+:::
+
+![](img/figure1.png){.fragment width=85%}
+:::
+
+
+---
+
+## With "`itsCausal`", we aim to deliver a set of recommendations for practitioners
+
+::: {.incremental}
+- **Key Idea: create an R-package "`itsCausal`", which**
+  - Provides guidance on the application of Interrupted Time Series
+  - Enhances the traditional model with a machine learning-based method to address the "no control group" scenario and improve counterfactual forecasting.
+  - Tailors the method to panel data where the number of units exceeds the number of time periods.
+
+::: {.notes}
+Widely used in real-world evidence, public health, health services research, health economics, and epidemiology.
+
+Health insurance claims,
+
+Problem: its targets one average effect
+No untreated units: forecast the counterfactual.
+
+<div class="small-space"></div>
+
+
+- **How it works:**
+  - Use machine learners and ensemble methods to train models on pre-intervention data.
+  - Forecast onto the post-intervention period ("counterfactual").
+  - Compare actual outcomes with predicted counterfactuals to estimate causal effects.
+  - Aggregate results for the desired population and the desired time period.
+
+:::
+:::
+
+<!-- - **Our "product":** A set of recommendations for practicionners.-->
+
+<!--
+- **Estimates:**
+  - **Average Treatment Effects (ATEs):** Provides insights into effect for the population.
+  - **Conditional Average Treatment Effects (CATEs):** Provides insights into effect heterogeneity at a more granular level.
+-->
+
+<!--
+::: aside
+Two strands of literature: @cerqua2024nocontrol; @brodersen2015inferring; @chernozhukov2021exact and @bernal2018methodological;@lopez2018use;@turner2021comparison
+:::
+-->
+
+---
+nocite: |
+  @cerqua2024nocontrol, @brodersen2015inferring, @chernozhukov2021exact, @bernal2018methodological, @lopez2018use, @turner2021comparison
+---
+
+
+
+
+---
+
+## Development of a user's guide for `itsCausal`
+
+### R Package
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {style="font-size: 80%;"}
+
+<div class="middle-space"></div>
+
+
+- **ML learners** (random forest, gradient boosting, neural networks, catboost, lstm) with hyperparameters tuning.
+- **Rolling-window approach** for post-intervention forecasts with time-variant and invariant predictors.
+- Effect computed as the difference between the observed and the forecasted values.
+- **Simulations** of different data-generating processes show good performance.
+:::
+
+:::
+::: {.column width="50%"}
+::: {style="text-align: center;"}
+![Simulation of an ARMA Process](img/simul_arma.png){width=100%}
+:::
+:::
+::::
+
+## Development of a user's guide for `itsCausal`
+
+### Benchmarking
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<div class="middle-space"></div>
+
+::: {style="font-size: 80%;"}
+  - We benchmark our method with **experimental evidence**
+
+    -  Randomized controlled trial: Primary Care Physicians in Switzerland were sent an information letter combining professional norms and peer comparison feedback about vitamin D testing (@mueller2023rct)
+    - ATE from `itsCausal` is within the 95% CI of the ATE from the RCT
+
+<div class="small-space"></div>
+
+<!--  - We re-estimate our research on low-value care with `itsCausal` and find similar results.-->
+:::
+
+:::
+::: {.column width="50%"}
+::: {style="text-align: center;"}
+![](img/rct_mueller.png){width=100%}
+:::
+:::
+::::
+
+<div class="middle-space"></div>
+
+## Development of a user's guide for `itsCausal`
+
+### User's guide
+
+::: {style="font-size: 80%;"}
+- Offer researchers and industry analysts recommendations for the implementation of interrupted time series.
+- Tests for the assumption of causal effects, especially for the "no-confounding" assumption.
+-  Provide guidance on how to implement ML learners.
+:::
+
+
+---
+
+## Conclusion
+- **`itsCausal`:** A powerful tool for estimating causal effects without a control group.
+- **Benchmarking** of the method with published research and experimental evidence.
+- **User's guide** for sound implementation of ITS in real-world evidence, public health, health services research, and health economics.
+
+<br>
+
+<br>
+
+<hr style="margin: 0px 0;color: #26351c;height: 0px;margin-bottom: 0.05em;">
+
+
+:::: {.columns .bottom-align}
+::: {.column width="22%"}
+![](img/logoswica.png){height=100px width=auto}  ![](img/bfh.png){height=100px width=auto}
+:::
+::: {.column width="50%" .bottom-align}
+
+<br>
+
+🔗 [`itsCausal` on GitHub](https://github.com/ASallin/itsCausal)<br>
+🌐 [www.aureliensallin.ch](https://www.aureliensallin.ch)
+:::
+::::
+
+
+---
+# Appendix
+
+---
+# Identifying assumptions for the causal effect in its
+
+The following assumptions must hold (see @cerqua2024nocontrol):
+
+  1. There are no hidden forms of treatment leading to different potential outcomes (**weak SUTVA**).
+  2. **Additivity**
+  3. **No anticipation and no confounding**
+    - Absence of anticipatory effects of the intervention on the covariates and the potential outcomes
+    - Future covariates do not affect current potential outcomes
+    - Covariates remain unaffected by the policy in the post-intervention period (post-treatment exogeneity of the covariates)
+  4. **Dynamic potential outcomes model**: the potential outcomes absent the policy (the "counterfactual") can be predicted using lagged values of the outcome and of the covariates.
+  5. **Post-intervention non-linear multi-step-ahead model**: the counterfactual can be predicted for multiple periods ahead using lagged values of the outcomes until the intervention, conditional expectations of the outcome after the intervention, and the covariates.
+
+<!--  the potential outcome absent the policy is a flexible function of the past lags of the outcome, the contemporaneous covariates, and the past lags of covariates. The error term is a zero-mean, uncorrelated error term following a generic distribution.
+-->
+
+## References
+---
+nocite: |
+  @*
+---
+
+::: {#refs}
+:::
