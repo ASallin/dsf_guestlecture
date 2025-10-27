@@ -1,0 +1,109 @@
+/*-- scss:defaults --*/
+
+// Import your fonts
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+// Base font size
+$font-size-root: 10px !default;
+
+// Normal text font size
+$font-size-normal: 0.18em !default;
+
+// Your color palette (copied from styles.scss)
+$misty-sky: #e6f1f2;
+$soft-teal: #b7d2d4;
+$foggy-green: #9fbfba;
+$slate-blue: #6a9ba6;
+$deep-forest: #3a5d65;
+$golden-yellow: #f0c400;
+$deep-red: #7a2c29;
+$charcoal-grey: #2f2f2f;
+$muted-green: #6f9d66;
+$dusty-blue: #4a8ca9;
+$hover-color: #a8dacc;
+$muted-pink: #b74a58;
+
+// Revealjs theme variables
+$theme: "white";
+$font-family-sans-serif: "Karla", sans-serif;
+$presentation-heading-font: "Quicksand", sans-serif;
+
+// Colors for presentation
+$body-bg: $misty-sky;
+$body-color: $deep-forest;
+$link-color: $muted-pink;
+$heading-color: $deep-red;
+
+// Presentation-specific
+$presentation-h1-font-size: 2.0em;
+$presentation-h2-font-size: 1.5em;
+$presentation-h3-font-size: 1.15em;
+$presentation-h4-font-size: 1.0em;
+
+/*-- scss:rules --*/
+
+.reveal .slides {
+  text-align: left;
+  font-size: 0.85em;
+}
+
+.reveal {
+  font-size: 32px;
+}
+
+.reveal p, .reveal li, .reveal div {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.reveal h1{
+    font-family: "Quicksand", sans-serif;
+    color: $deep-red;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+
+.reveal h2 {
+  font-family: "Quicksand", sans-serif;
+  color: $deep-forest;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin-bottom: 1.5em;
+}
+
+.reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: "Quicksand", sans-serif;
+  color: $deep-forest;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.reveal .title-slide h1 {
+  letter-spacing: 5px;
+}
+
+.reveal blockquote {
+  background: $foggy-green;
+  border-left: 5px solid $muted-pink;
+  padding: 1em;
+}
+
+.reveal .callout {
+  border-left: 5px solid $muted-pink;
+  background-color: rgba($misty-sky, 0.5);
+}
+
+// Custom slide classes
+.content-slide {
+  background-color: $misty-sky;
+}
+
+.accent-slide {
+  background-color: $muted-pink;
+  color: white;
+}
+
+.accent-slide h1, .accent-slide h2 {
+  color: white;
+}

@@ -1,0 +1,70 @@
+/*-- scss:defaults --*/
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
+// Fonts 
+$karla: "Karla", sans-serif; // For main. Change in _quarto.yml
+$quicksand: "Quicksand", sans-serif; // for headers: change below
+// CSS grouping selector, which applies Sen to any HTML header
+
+// Colors
+$misty-sky: #e6f1f2;
+$soft-teal: #b7d2d4;
+$foggy-green: #9fbfba;
+$slate-blue: #6a9ba6;
+$deep-forest: #3a5d65;
+$golden-yellow: #f0c400;
+$deep-red: #7a2c29;
+$charcoal-grey: #2f2f2f;
+$muted-green: #6f9d66;
+$dusty-blue: #4a8ca9;
+$hover-color: #a8dacc;
+$muted-pink: #b74a58;
+
+// Base document colors
+$navbar-bg: $misty-sky; // navbar
+$navbar-fg: $deep-forest; // navbar foreground elements
+$navbar-hl: $hover-color; // highlight color when hovering over navbar links
+$body-bg: $muted-pink; // page background 
+$body-color: $deep-forest; // page text 
+$footer-bg: $misty-sky; // footer 
+$link-color: $muted-pink; // hyperlinks 
+
+// Inline code
+$code-bg: $foggy-green; // inline code background color
+$code-color: $muted-pink; // inline code text color
+
+
+/*-- scss:rules --*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $quicksand;
+}
+
+h1, h2 {
+  letter-spacing: 5px;
+  font-weight: 800; // Google fonts tells you which weights your chosen font family allows for!
+}
+
+.title {
+  color: $deep-red;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.navbar-brand img { 
+  max-height: 120px;
+  width: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $misty-sky;
+}
+
