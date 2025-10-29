@@ -1,6 +1,6 @@
 ---
 title: "Guest lecture Data Science Fundamentals"
-subtitle: "On roads travelled, unnecessary shots, and data "
+subtitle: "On roads travelled, unnecessary shots, and the data that connects them"
 author: "Aurélien Sallin, PhD"
 date: "2025-10-29"
 echo: false
@@ -29,17 +29,15 @@ bibliography: references.bib
 
 # My journey to data science
 
-## ... it all started by accident
+## Choice #1: Philo vs Econom(etr)ics
 
 ::::: {.columns}
 :::: {.column width="50%"}
 \
 
-- I wanted to understand stuff. I studied philosophy.
-
-- I discovered econometrics and causal inference. It fascinated me.
-
-- I liked modelling data and use it to guide policy making. R & Applied Econ was for me.
+- I studied philosophy to understand stuff.
+- Then I discovered econometrics and causal inference.
+- I liked the idea of using causal inference to guide policy making.
 
 ::::
 :::: {.column width="50%"}
@@ -48,29 +46,16 @@ bibliography: references.bib
 ::::
 :::::
 
-#### I never really planned a career. I just followed what I found fascinating.
 
-::: {.notes}
-I was always unsure about what I wanted to do in my life, only that I wanted to understand stuff.
-
-I started philosophy. Had lots of fun. Got lost in models of moral decision making. But it felt somehow disconnected.
-
-What interested me were econometric applications to public finance, health and education economics.
-
-:::
-
-
-## PhD as 4 years of discovery
+## Choice #2: PhD vs Work
 
 :::: {.columns}
 ::: {.column width="50%"}
 
 \
 
-- During my MA, I was working as a student assistant and received great impulse.
-
+- As a MA student assistant, I was initiated to research in applied econ.
 - I went for a PhD in Econometrics and Finance at HSG.
-
 - PhD was a great experience, and was intensely rich in learning.*
 
 :::
@@ -80,28 +65,25 @@ What interested me were econometric applications to public finance, health and e
 :::
 :::::
 
-#### I see a PhD as a career choice similar to working a first job. There is no hierarchy here.
-
 ::: {style="position: absolute; bottom: 20px; font-size: 0.5em; color: gray;"}
 \* Don't google "phd and mental health" (there is a fascinating 2025 study about it in the [Journal of Health Economics](https://www.sciencedirect.com/science/article/pii/S0167629625001055)).
 :::
 
 ::: {.notes}
-By chance, I was working as a student assistant and I received great inpulse. This led me to find a PhD position in St. Gallen.
+I see a PhD as a career choice similar to working a first job. There is no hierarchy here.
 :::
 
 
 
-## At the crossroads again...
+## Choice #3: Academia vs Industry
 
 :::: {.columns}
 :::: {.column width="50%"}
 
 \
 
-- PhD done, I faced the choice: assistant professor in academia, or industry.
-- I wanted to have impact on real-life decisions, develop leadership skills, and have fun.
-- Now: **Senior Economist/Data Scientist** in the Health Services Management Team of SWICA.
+- Crucial for me: impact on real-life decisions, develop leadership skills, have fun, ...
+- Now: **Senior Economist/Data Scientist** at a major Swiss Healthcare company.
 
 ::::
 :::: {.column width="50%"}
@@ -112,20 +94,22 @@ By chance, I was working as a student assistant and I received great inpulse. Th
 
 \
 
-#### There is no "one way"
+
+# Claims Data: My 🥖 and 🧈
+
+## Claims Data
+
+In my everyday life, I work mostly with **claims data**
+
+   - digital trail of every medical interaction in Switzerland
+   - billing data
+   - \>130mio invoices per year
+
 
 
 ::: {.notes}
-After the PhD, I received offers to work as an assistant professor in academia. I wanted to keep my door open, so I also applied to industry. I did many interviews and had many offers. How I decided? The "état d'esprit" in the industry.
-
-I landed a job at SWICA. There I do X and >.
-
+Bridge from personal story to the case study.
 :::
-
-
-
-
-# Claims Data: My 🥖 and 🧈
 
 ```{r setup}
 #| output: false
@@ -303,94 +287,86 @@ plot_vitd_masked <- function(
 }
 ```
 
-## Claims data
+## Every medical act gets coded...
 
 ![](img/claimsdata1.svg){width=100%}
 
-## Claims data
+## ... linked to a patient ...
 
 ![](img/claimsdata2.svg){width=100%}
 
-## Claims data
+## ... who makes a claim for reimbursement...
 
 ![](img/claimsdata3.svg){width=100%}
 
-## Claims data
+## ... to a health insurer.
 
 ![](img/claimsdata4.svg){width=100%}
 
-## Claims data
+## Personal patient information
 
 ![](img/tarmed1.svg){width=100%}
 
-## Claims data
+## Standardized medical treatment and pricing
 
 ![](img/tarmed2.svg){width=100%}
 
-## Claims data
+
+## In a nutshell
 
 #### Contain billing information
 
 - Each medical act is coded and mapped to a price.
-- This is used for reimbursement.
-- The way pricing is done creates incentives and (might) distort demand/supply.
-
-::: {.notes}
-This is the econ side of it.
-:::
+- Follow patients over time.
+- Comprehensive view of patient healthcare utilization patterns.
 
 \
 
-::: {.incremental}
 #### Follow strict standards
 - Structure and standards are defined for data exchange.
 - XML standards for electronic data exchange (see [example](https://www.forum-datenaustausch.ch/fileadmin/fda_documents/5.0/Rechnungen/XML-Schemas/D_Anpassungen_XML-Standard_generalInvoice_5.0_20241209.pdf))
-:::
 
-::: {.notes}
-This is the data handling side of it.
+
+##
+\
+
+\
+
+\
+
+::: {style="text-align: center;"}
+##### What can we use these data for?
 :::
 
 
 # Use case: low value care and Vit D tests 💉
 
-
-## What to do about low-value care?
-
-::::: {.columns}
-:::: {.column width="60%"}
-::: {.fragment}
-- **How can healthcare systems effectively reduce low-value care** that wastes millions in resources?
-:::
-
-\
-
-::: {.fragment}
-#### How much❓
-:::
-::::
-:::::
-
----
-
-## What to do about low-value care?
+## The Problem: Low-Value Care and Vitamin D
 
 ::::: {.columns}
-:::: {.column width="60%"}
+:::: {.column width="65%"}
 ::: {.incremental}
-- **How can healthcare systems effectively reduce low-value care** that wastes millions in resources?
 
-- **Our Natural Experiment:** Switzerland tried two different approaches for Vitamin D tests:
-    - Clinical guidelines
-    - Financial restrictions
+- **We want to effectively reduce low-value care**
+    - Services with limited patient benefit but **high costs** (How much❓)
+<br>
+<br>
 
-- **We study** what actually happened to prescription numbers
+- **Vitamin D testing** is a perfect example
+  - Clinical guidelines consistently advise **against** routine testing for low-risk individuals
+  - Yet testing rates almost **doubled** between 2013-2020 in Switzerland
+<br>
+<br>
+
+- **We studied which policy tools are most effective**
+  - Our findings made national headlines
 
 :::
 ::::
-:::: {.column width="40%"}
+:::: {.column width="35%"}
 ::: {.fragment}
 ![](img/sonntagszeitung.jpg){width=100%}
+
 :::
 ::::
 :::::
@@ -403,27 +379,6 @@ This study examines a real-world natural experiment in Switzerland where two dif
 
 - **Published in October 2025**, multidisciplinary collaboration primary care physicians, public health and health economists
 
-:::
-
----
-
-## The Problem: Vitamin D and Low-Value Care
-
-::: {.incremental}
-
-- **Vitamin D testing:** Prominent example of low-value care
-  - Clinical guidelines consistently advise against routine testing for low-risk individuals
-  - Yet testing rates continue to rise globally
-
-\
-
-- **Switzerland's situation**
-  - Testing rates almost **doubled** between 2013-2020
-  - From 96 to 199 tests per 1000 inhabitants
-:::
-
-::: {.notes}
-Despite clear evidence that routine vitamin D testing provides little clinical value, its use has been increasing dramatically.
 :::
 
 ---
@@ -481,6 +436,7 @@ Despite clear evidence that routine vitamin D testing provides little clinical v
   - Compares observed data with counterfactual trend
   - Accounts for patient characteristics and clinical indications
 :::
+
 
 
 ---
@@ -691,8 +647,7 @@ Healthcare system savings:
 :::
 ---
 
-
-## Study Details
+## We just published our results
 
 ::::: {.columns}
 :::: {.column width="60%"}
@@ -701,8 +656,8 @@ Healthcare system savings:
 
 \
 
-- **Collaboration:**
-    - Health services research team at SWICA
+- **Multi-disciplinary team:**
+    - Health services research, SWICA
     - Institute of Primary Care, University of Zürich
     - Institute of Health Economics and Health Policy, Bern University of Applied Sciences
 :::
@@ -714,17 +669,6 @@ Healthcare system savings:
 ::::
 :::::
 
-::: {.notes}
-
-- **Low-value care:** Services with limited patient benefit but high costs
-
-This study examines a real-world natural experiment in Switzerland where two different policy tools were used to reduce low-value care.
-
-- **Published in October 2025**, multidisciplinary collaboration primary care physicians, public health and health economists
-
-:::
-
----
 
 # Where to go from here? 🌎
 
@@ -735,6 +679,13 @@ This study examines a real-world natural experiment in Switzerland where two dif
 1. Learn until you've developed an Intuition.
 2. Invest in Communication.
 3. Explore and show your work.
+
+::: {.notes}
+1. **Learn until you've developed an Intuition** - Master the fundamentals, but keep questioning
+2. **Invest in Communication** - The best analysis is worthless if you can't explain it
+3. **Explore and show your work** - Share your projects, get feedback, build a portfolio
+:::
+
 
 ## Keep in touch
 
