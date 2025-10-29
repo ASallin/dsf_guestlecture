@@ -9,7 +9,7 @@ format:
   revealjs:
     output-file: index.html
     theme: presentation-theme.scss
-    slide-number: true
+    slide-number: false
     chalkboard: true
     preview-links: auto
     css: styles.css  # Include your main CSS if needed
@@ -651,7 +651,6 @@ Healthcare system savings:
 
 ::::: {.columns}
 :::: {.column width="60%"}
-::: {.incremental}
 **Full Study:** [@sallin2025impact] [🔗](https://bmchealthservres.biomedcentral.com/articles/10.1186/s12913-025-13524-9)
 
 \
@@ -660,7 +659,6 @@ Healthcare system savings:
     - Health services research, SWICA
     - Institute of Primary Care, University of Zürich
     - Institute of Health Economics and Health Policy, Bern University of Applied Sciences
-:::
 ::::
 :::: {.column width="40%"}
 ::: {.fragment}
@@ -678,7 +676,7 @@ Healthcare system savings:
 
 1. Learn until you've developed an Intuition.
 2. Invest in Communication.
-3. Explore and show your work.
+3. Explore and show your Work.
 
 ::: {.notes}
 1. **Learn until you've developed an Intuition** - Master the fundamentals, but keep questioning
